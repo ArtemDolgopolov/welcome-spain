@@ -1,0 +1,812 @@
+@import url("https://fonts.googleapis.com/css?family=Cabin|Herr+Von+Muellerhoff|Source+Sans+Pro:400,900&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-font: "Source Sans Pro", sans-serif;
+    --secondary-font: "Herr Von Muellerhoff", cursive;
+    --body-font: "Cabin", sans-serif;
+    --main-font-color-dark: #252525;
+    --secondary-font-color: #c59d5f;
+    --body-font-color: #515151;
+}
+
+html {
+    font-family: var(--body-font);
+    font-size: 10px;
+    color: var(--body-font-color);
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    min-width: 28rem;
+    min-height: auto;
+}
+
+section {
+    padding: 3.9rem 0;
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+    max-width: 100%;
+}
+
+header .logo_main {
+    height: 50px;
+    width: 50px;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    font-size: 1.6rem;
+}
+
+.container {
+    width: 100%;
+    max-width: 122.5rem;
+    margin: 0 auto;
+    padding: 0 2.4rem;
+}
+
+
+/*header*/
+
+header {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, .5), transparent);
+}
+
+.nav {
+    height: 7.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu_toggle {
+    color: #fff;
+    font-size: 2.2rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 2.5rem;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.fa-times {
+    display: none;
+}
+
+.nav_list {
+    list-style: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100vh;
+    background-color: var(--main-font-color-dark);
+    padding: 4.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    z-index: 900;
+    transform: translateX(-100%);
+    transition: transform .5s;
+}
+
+.nav:before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .8);
+    z-index: 800;
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity .5s;
+}
+
+.open .fa-times {
+    display: block;
+}
+
+.open .fa-bars {
+    display: none;
+}
+
+.open .nav_list {
+    transform: translateX(0);
+}
+
+.open .nav::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.nav_item {
+    border-bottom: 2px solid rgba(255, 255, 255, .3);
+}
+
+.nav_link {
+    position: relative;
+    display: inline-block;
+    font-size: 2em;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #f31818 50%, #f6ea41 50%, 60%, #f31818 60%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 100% 200%;
+    background-position: 100% -26%;
+    transition: background-position .5s;
+}
+
+.nav_link:hover {
+    background-position: 0%;
+}
+
+
+/*Hero*/
+
+.hero {
+    width: 100%;
+    height: 100vh;
+    background: url("../img/parc_guell_barcelona_spain-1366x768.jpg") center no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.sub_headline_country {
+    font-size: 8rem;
+    line-height: .6;
+    font-family: var(--secondary-font);
+    color: #f31818;
+    letter-spacing: 2px;
+    opacity: 0;
+    -webkit-animation: fadeUp .8s forwards;
+    animation: fadeUp .8s forwards;
+    -webkit-animation-delay: .5s;
+    animation-delay: .5s;
+}
+
+.first_letter {
+    text-transform: uppercase;
+    font-size: 11.4rem;
+}
+
+.headline {
+    color: #f6ea41;
+    font-size: 3.7rem;
+    font-family: var(--main-font);
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: .5rem;
+    margin-left: 1rem;
+    -webkit-animation: scale 1s forwards;
+    animation: scale 1s forwards;
+    -webkit-animation-delay: .5s;
+    animation-delay: 1s;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.line {
+    position: relative;
+    width: 100%;
+    max-width: 8.4rem;
+    height: .25rem;
+    background-color: #f6ea41;
+    opacity: 0;
+    -webkit-animation: grow 2s forwards;
+    animation: grow 2s forwards;
+    -webkit-animation-delay: 1.3s;
+    animation-delay: 1.3s;
+}
+
+.line_right::before,
+.line_left::before {
+    content: "";
+    position: absolute;
+    border: .8rem solid transparent;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    -webkit-animation: grow .7s forwards;
+    animation: grow .7s forwards;
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+}
+
+.line_right::before {
+    border-right-color: #f6ea41;
+    right: 0;
+}
+
+.line_left::before {
+    border-left-color: #f6ea41;
+    left: 0;
+}
+
+.asterisk {
+    font-size: 1.2rem;
+    color: #f6ea41;
+    margin: 0 1.4rem;
+    opacity: 0;
+    -webkit-animation: spin .5s forwards;
+    animation: spin .5s forwards;
+    -webkit-animation-delay: 1.8s;
+    animation-delay: 1.8s;
+}
+
+.single_animation {
+    opacity: 0;
+    -webkit-animation: fadeDown .8s forwards;
+    animation: fadeDown .8s forwards;
+    -webkit-animation-delay: .5s;
+    animation-delay: 1.5s;
+}
+
+.headline_description h5 {
+    color: #f31818;
+    font-size: 1.4rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 1.1rem;
+    letter-spacing: 3px;
+    margin-right: -3px;
+}
+
+.btn {
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: normal;
+    margin-right: -.2rem;
+}
+
+.cta_btn {
+    font-size: 1.1rem;
+    background-image: linear-gradient(to bottom, #f31818 39%, #f6ea41 39%, 60%, #f31818 60%);
+    padding: .9rem 1.8rem;
+    color: #fff;
+    border-radius: .5rem;
+    background-size: 100% 200%;
+    background-position: 100% -26%;
+    transition: background-position .5s, color .5s;
+}
+
+.cta_btn:hover,
+.cta_btn:focus {
+    color: #000;
+    background-position: 0%;
+}
+
+
+/*Discover Spain*/
+
+.global_headline {
+    text-align: center;
+    margin-top: 3.9rem;
+}
+
+.discover_spain .global_headline {
+    margin-top: 6.9rem;
+}
+
+.global_headline .asterisk {
+    color: #f6ea41;
+    margin: 2.4rem 0;
+    letter-spacing: .7rem;
+    margin-right: -.7rem;
+}
+
+.global_headline .sub_headline {
+    letter-spacing: -1px;
+    line-height: .62;
+}
+
+.country_info {
+    text-align: center;
+}
+
+.country_description {
+    margin-bottom: 3rem;
+}
+
+.country_description p {
+    line-height: 1.8;
+    margin-bottom: 2.4rem;
+}
+
+.body_btn {
+    font-size: 1.5rem;
+    color: #f6ea41;
+    position: relative;
+    transition: color .5s;
+}
+
+.body_btn::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    left: 0;
+    bottom: -3px;
+    background-color: #f6ea41;
+    transition: background-color .5s;
+}
+
+.body_btn:hover,
+.body_btn:focus {
+    color: #f31818
+}
+
+.body_btn:hover::before,
+.body_btn:focus::before {
+    background-color: #f31818;
+}
+
+
+/*Dizzy sightseeings*/
+
+.dizzy_sightseeings {
+    background: url("../img/toledo.jpg") center no-repeat;
+    background-size: cover;
+}
+
+.between {
+    min-height: 65vh;
+    display: flex;
+    align-items: center;
+}
+
+section .sub_headline_seeings {
+    font-size: 8rem;
+    line-height: .5;
+    font-family: var(--secondary-font);
+    color: #f31818;
+    letter-spacing: 4px;
+}
+
+
+/*Discover cuisine*/
+
+.image_group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.5rem;
+}
+
+.discover_our_cuisine .country_description {
+    padding-top: 3rem;
+    margin-bottom: 0;
+}
+
+
+/*Incendiary dances*/
+
+.incendiary_dances {
+    background: url("../img/SA-lead-1366x768.jpg") center no-repeat;
+    background-size: cover;
+}
+
+
+/*Visit Spain*/
+
+footer {
+    padding: 7.8rem;
+    background-color: #121212;
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+}
+
+.back_to_top {
+    width: 7rem;
+    height: 7rem;
+    background-color: #121212;
+    position: absolute;
+    top: -3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+}
+
+.back_to_top i {
+    display: block;
+    color: #ffffff;
+    font-size: 2rem;
+    padding: 2rem;
+    -webkit-animation: up 2s infinite;
+    animation: up 2s infinite;
+}
+
+.footer_content {
+    overflow: hidden;
+}
+
+.footer_content h4 {
+    font-size: 1.9rem;
+    text-transform: uppercase;
+    font-weight: 100;
+    letter-spacing: 3px;
+    margin-bottom: 3rem;
+}
+
+.footer_content .asterisk {
+    margin: 2.4rem 0;
+}
+
+.footer_content_about {
+    margin-bottom: 5.4rem;
+}
+
+.footer_content_about p {
+    line-height: 2;
+}
+
+.social_icons {
+    list-style: none;
+    margin-bottom: 5.4rem;
+    display: flex;
+    justify-content: center;
+}
+
+.social_icons i {
+    font-size: 2rem;
+    color: #fff;
+    padding: 0.8rem 2rem;
+    opacity: .5;
+    transition: color .5s;
+}
+
+.social_icons i:hover,
+.social_icons i:focus {
+    color: #f6ea41;
+}
+
+.newsletter_form {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.newsletter_input {
+    width: 100%;
+    max-width: 25rem;
+    padding: 1rem;
+    border-radius: .5rem;
+}
+
+.newsletter_btn {
+    background-color: transparent;
+    border: none;
+    color: var(--main-font-color-dark);
+    cursor: pointer;
+    font-size: 1.6rem;
+    padding: 1px .6rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 21.5rem;
+}
+
+.infinite_asterisk_spin {
+    font-size: 1.2rem;
+    color: #f6ea41;
+    margin: 1.4rem;
+    opacity: 0;
+    -webkit-animation: spinInfinite 2s infinite;
+    animation: spinInfinite 2s infinite;
+}
+
+
+/*Media queries*/
+
+@media screen and (max-width: 300px) {
+    .newsletter_btn {
+        margin-left: 19rem;
+    }
+    .newsletter_input {
+        padding: 1rem 3rem 1rem 1rem;
+        outline: rgba(0, 0, 0, .5)
+    }
+}
+
+@media screen and (max-width: 345px) {
+    header .logo_main {
+        width: 4rem;
+        height: 4rem;
+    }
+    .fa-bars:before,
+    .fa-times:before {
+        font-size: 2rem;
+    }
+    section .sub_headline_seeings {
+        font-size: 6rem;
+    }
+    .first_letter {
+        font-size: 9.4rem;
+    }
+    .headline {
+        font-size: 2.7rem;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    footer {
+        padding: 2.8rem 0.8rem;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    section {
+        padding: 7.9rem;
+    }
+    .menu_toggle {
+        display: none;
+    }
+    .nav {
+        justify-content: space-between;
+    }
+    .nav_list {
+        position: initial;
+        width: initial;
+        height: initial;
+        background-color: transparent;
+        padding: 0;
+        justify-content: initial;
+        flex-direction: row;
+        transform: initial;
+    }
+    .nav_item {
+        margin: 0 2.4rem;
+        border-bottom: none;
+    }
+    .nav_list:last-child {
+        margin-right: 0;
+    }
+    .nav_link {
+        font-size: 1.3rem;
+    }
+    .active {
+        position: relative;
+    }
+    .active:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #f31818;
+        left: 0;
+        top: 15px;
+    }
+    .sub_headline {
+        font-size: 10rem;
+    }
+    .first_letter {
+        font-size: 12.2rem;
+    }
+    .headline {
+        font-size: 4.7rem;
+        letter-spacing: .8rem;
+    }
+    .line {
+        max-width: 11.4rem;
+    }
+    .country_info {
+        display: flex;
+        align-items: center;
+    }
+    .country_info>div {
+        flex: 1;
+    }
+    .padding_right {
+        padding-right: 7rem;
+    }
+    .footer_content {
+        max-width: 77.5rem;
+        margin: auto;
+    }
+    .footer_content_about {
+        max-width: 51.3rem;
+        margin: 0 auto 5.4rem;
+    }
+    .footer_content_divider {
+        display: flex;
+        justify-content: space-between;
+    }
+    .social_icons,
+    .newsletter_form {
+        width: 100%;
+        max-width: 27.3rem;
+        margin: 0 1rem;
+    }
+    .newsletter_btn {
+        display: inline-block;
+        padding: 0 5rem 0 0;
+    }
+    .newsletter_input {
+        font-family: var(--body-font);
+        max-width: 40rem;
+        padding-right: 4rem;
+    }
+    .newsletter_btn:focus,
+    .newsletter_input:focus {
+        outline: 0;
+    }
+    .social_icons i {
+        opacity: 1;
+    }
+}
+
+
+/*Animations*/
+
+@-webkit-keyframes fadeUp {
+    0% {
+        transform: translateY(4rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeUp {
+    0% {
+        transform: translateY(4rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@-webkit-keyframes scale {
+    0% {
+        transform: scale(2);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes scale {
+    0% {
+        transform: scale(2);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@-webkit-keyframes grow {
+    0% {
+        width: 0;
+    }
+    100% {
+        opacity: 1;
+        width: 100%;
+    }
+}
+
+@keyframes grow {
+    0% {
+        width: 0;
+    }
+    100% {
+        opacity: 1;
+        width: 100%;
+    }
+}
+
+@-webkit-keyframes spin {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        opacity: 1;
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        opacity: 1;
+        transform: rotate(-360deg);
+    }
+}
+
+@-webkit-keyframes spinInfinite {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        opacity: 1;
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes spinInfinite {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        opacity: 1;
+        transform: rotate(-360deg);
+    }
+}
+
+@-webkit-keyframes fadeDown {
+    0% {
+        transform: translateY(-1rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeDown {
+    0% {
+        transform: translateY(-1rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@-webkit-keyframes up {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-1rem);
+    }
+}
+
+@keyframes up {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-1rem);
+    }
+}
